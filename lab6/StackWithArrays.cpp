@@ -6,11 +6,13 @@ class Stack{
     private:
         int top;
         int stackSize = 10;
-        int stack_arr[10];
+        int *stack_arr;
 
     public:
-        Stack(){
+        Stack(int size){
             top = -1;
+            stackSize = size;
+            stack_arr = new int[stackSize];
         }
 
         bool isEmpty(){
@@ -23,7 +25,7 @@ class Stack{
         
         void push(int x){
             if(isFull()){
-                cout << "Stack Overflow!";
+                cout << "Stack Overflow!" << endl;
                 return;
             }
             top++;
@@ -32,7 +34,7 @@ class Stack{
 
         int pop(){
             if(isEmpty()){
-                cout << "Stack Underflow!";
+                cout << "Stack Underflow!" << endl;
                 return -1;
             }
             top = top - 1;
@@ -41,7 +43,7 @@ class Stack{
 
         int stackTop(){
             if(isEmpty()){
-                cout << "Stack is Empty!";
+                cout << "Stack is Empty!" << endl;
                 return -1;
             }
             return stack_arr[top];
@@ -50,7 +52,7 @@ class Stack{
         void display(){
 
             if(isEmpty()){
-                cout << "Stack is Empty!";
+                cout << "Stack is Empty!" << endl;
                 return;
             }
 
@@ -62,7 +64,12 @@ class Stack{
 };
 
 int main(){
-    Stack myStack;
+    
+    int size;
+    cout << "Enter the size of the stack: ";
+    cin >> size;
+    Stack myStack(size);
+    
 
     myStack.push(8);
     myStack.push(10);
